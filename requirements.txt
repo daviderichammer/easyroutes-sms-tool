@@ -1,0 +1,41 @@
+# Core dependencies
+requests>=2.28.0
+twilio>=8.2.0
+pyyaml>=6.0
+python-dotenv>=0.19.0
+click>=8.0.0
+
+# Data handling
+pydantic>=1.10.0
+dataclasses-json>=0.5.7
+
+# Async support
+aiohttp>=3.8.0
+asyncio-throttle>=1.0.2
+
+# Logging and monitoring
+structlog>=22.1.0
+colorama>=0.4.4
+
+# Development dependencies
+pytest>=7.0.0
+pytest-cov>=3.0.0
+pytest-asyncio>=0.18.0
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.950
+isort>=5.10.0
+
+# Testing utilities
+responses>=0.20.0
+pytest-mock>=3.7.0
+factory-boy>=3.2.0
+
+# Documentation
+sphinx>=4.5.0
+sphinx-rtd-theme>=1.0.0
+
+# Security
+bandit>=1.7.0
+safety>=2.0.0
+

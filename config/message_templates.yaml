@@ -1,0 +1,138 @@
+# Message Templates Configuration
+# Define custom SMS message templates with dynamic content insertion
+
+templates:
+  # Default template for standard delivery notifications
+  default:
+    name: "Standard Delivery Update"
+    description: "Standard notification for incomplete deliveries"
+    body: |
+      Hello {customer_name},
+      
+      Your delivery to {address} is currently {status_message}.
+      
+      If you have any questions, please contact us.
+      
+      Thank you!
+
+  # Urgent template for time-sensitive notifications  
+  urgent:
+    name: "Urgent Delivery Update"
+    description: "Urgent notification requiring immediate attention"
+    body: |
+      URGENT: Hello {customer_name},
+      
+      We need to update you about your delivery to {address}.
+      Current status: {status_message}
+      
+      Please contact us immediately at [PHONE_NUMBER].
+      
+      Thank you for your prompt attention.
+
+  # Friendly template with more casual tone
+  friendly:
+    name: "Friendly Delivery Update"
+    description: "Casual, friendly notification tone"
+    body: |
+      Hi {customer_name}! 👋
+      
+      Just wanted to give you a quick update on your delivery to {address}.
+      
+      Status: {status_message}
+      
+      We'll keep you posted! Feel free to reach out if you have questions.
+      
+      Thanks!
+
+  # Professional template for business customers
+  professional:
+    name: "Professional Delivery Update"
+    description: "Formal notification for business customers"
+    body: |
+      Dear {customer_name},
+      
+      This is to inform you that your delivery scheduled for {address} has the following status: {status_message}.
+      
+      We will continue to monitor the progress and provide updates as necessary.
+      
+      For any inquiries, please contact our customer service team.
+      
+      Best regards,
+      Delivery Team
+
+  # Retry template for attempted deliveries
+  retry:
+    name: "Delivery Retry Notification"
+    description: "Notification for delivery retry attempts"
+    body: |
+      Hello {customer_name},
+      
+      We attempted to deliver your package to {address} but were unable to complete the delivery.
+      
+      Current status: {status_message}
+      
+      We will attempt redelivery. Please ensure someone is available to receive the package.
+      
+      Contact us if you need to reschedule.
+
+# Status message mappings
+# These map EasyRoutes delivery status codes to user-friendly messages
+status_messages:
+  UNKNOWN: "being processed by our team"
+  OUT_FOR_DELIVERY: "out for delivery and on its way to you"
+  ATTEMPTED_DELIVERY: "attempted - we'll try again soon"
+  READY_FOR_DELIVERY: "ready for delivery and will be dispatched shortly"
+
+# Template variables available for use in message bodies:
+# {customer_name} - Customer name from contact information
+# {address} - Formatted delivery address
+# {status_message} - User-friendly status message
+# {route_name} - Name of the delivery route
+# {driver_name} - Name of the assigned driver (if available)
+# {estimated_time} - Estimated delivery time (if available)
+# {tracking_number} - Package tracking number (if available)
+# {contact_phone} - Customer service phone number
+# {company_name} - Your company name
+
+# Configuration options
+settings:
+  # Default template to use if none specified
+  default_template: "default"
+  
+  # Maximum message length (SMS limit is 160 characters for single message)
+  max_message_length: 160
+  
+  # Whether to include customer name in messages
+  include_customer_name: true
+  
+  # Whether to include delivery address in messages
+  include_address: true
+  
+  # Whether to include status information
+  include_status: true
+  
+  # Fallback customer name if none provided
+  fallback_customer_name: "Valued Customer"
+  
+  # Fallback address if none provided
+  fallback_address: "your location"
+
+# Validation rules for templates
+validation:
+  # Required fields that must be present in every template
+  required_fields:
+    - "name"
+    - "description" 
+    - "body"
+  
+  # Maximum length for template names
+  max_name_length: 50
+  
+  # Maximum length for template descriptions
+  max_description_length: 200
+  
+  # Variables that must be available for substitution
+  required_variables:
+    - "customer_name"
+    - "status_message"
+
